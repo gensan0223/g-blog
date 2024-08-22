@@ -1,5 +1,8 @@
 ---
+import { getBlogs } from "../../libs/microcms.ts"
 
+const response = await getBlogs({ fields: ["id", "title"]})
+console.log(response)
 ---
 
 <html lang="en">
@@ -12,5 +15,14 @@
 	</head>
 	<body>
 		<h1>Astro</h1>
+    <ul>
+      {
+        response.contents.map((blog: any) => (
+          <li>
+            <a href={blog.id}>{blog.title}</a>
+          </li>
+        ))
+      }
+    </ul>
 	</body>
 </html>
