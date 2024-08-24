@@ -1,8 +1,11 @@
 ---
 import { getBlogs } from "../../libs/microcms.ts"
 
+export type blogType = {
+  id: string,
+  title: string
+}
 const response = await getBlogs({ fields: ["id", "title"]})
-console.log(response)
 ---
 
 <html lang="en">
