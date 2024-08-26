@@ -7,15 +7,26 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.14.4",
     "microcms-js-sdk": "^3.1.2",
+    "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "git-cz": "^4.9.0"
+    "@eslint/js": "^9.9.1",
+    "daisyui": "^4.12.10",
+    "eslint": "^9.9.1",
+    "git-cz": "^4.9.0",
+    "globals": "^15.9.0",
+    "husky": "^9.1.5",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript-eslint": "^8.2.0"
   }
 }
