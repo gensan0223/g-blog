@@ -1,11 +1,11 @@
 ---
-import { getBlogs } from "../../libs/microcms.ts";
+import { getBlogs } from '../../libs/microcms.ts';
 
 export type blogType = {
   id: string;
   title: string;
 };
-const response = await getBlogs({ fields: ["id", "title"] });
+const response = await getBlogs({ fields: ['id', 'title'] });
 ---
 
 <html lang="en">
