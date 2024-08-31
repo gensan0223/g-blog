@@ -6,7 +6,7 @@ const client = createClient({
   apiKey: import.meta.env.API_KEY,
 });
 
-export const getBlogs = async (queries: MicroCMSQueries) => {
+export const getBlogs = async (queries?: MicroCMSQueries) => {
   return await client.get({ endpoint: 'blogs', queries });
 };
 
