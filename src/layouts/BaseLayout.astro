@@ -1,0 +1,21 @@
+---
+import '../styles/global.css';
+import Header from './Header.astro';
+---
+
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ブログ一覧</title>
+  </head>
+  <body class="bg-gray-100 text-gray-900">
+    <Header />
+    <main class="container mx-auto p-4">
+      <slot />
+    </main>
+    <footer class="bg-blue-500 text-white p-4 text-center">
+      © 2024 My Blog
+    </footer>
+  </body>
+</html>
