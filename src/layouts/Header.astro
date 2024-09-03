@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { Image } from 'astro:assets';
+import logoImage from '../assets/2_transparent.png';
 ---
 
 <div class="navbar bg-primary text-primary-content">
@@ -35,7 +37,8 @@ import '../styles/global.css';
         <li><a>Item 3</a></li>
       </ul>
     </div>
-    <a class="btn btn-ghost text-xl">daisyUI</a>
+    <Image src={logoImage} alt="" class="logo" />
+    <a href="/" class="btn btn-ghost text-xl">G-Blog</a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
@@ -56,3 +59,9 @@ import '../styles/global.css';
     <a class="btn">Button</a>
   </div>
 </div>
+
+<style>
+  img.logo {
+    width: 100px;
+  }
+</style>
