@@ -1,5 +1,6 @@
 ---
 import { getBlogs, getBlogDetail } from '../../libs/microcms';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import type { blogType } from './index.astro';
 
 export async function getStaticPaths() {
@@ -14,18 +15,56 @@ const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>{blog.title}</h1>
-    <p>公開日時: {new Date(blog.publishedAt).toLocaleString()}</p>
-    <div set:html={blog.content} />
-    <div>{blog.content}</div>
-  </body>
-</html>
+<BaseLayout>
+  <div class="blog-detail">
+    <h1 class="text-3xl font-bold mb-4">{blog.title}</h1>
+    <p class="text-gray-500 mb-6">
+      公開日時: {new Date(blog.publishedAt).toLocaleString()}
+    </p>
+    <div class="blog-content" set:html={blog.content} />
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-detail {
+    padding: 1rem;
+  }
+
+  .blog-detail h1 {
+    line-height: 1.5;
+  }
+
+  .blog-detail p {
+    line-height: 1.75;
+  }
+
+  /* 記事本文の行間を調整 */
+  .blog-content p {
+    line-height: 1.8; /* 行間の設定 */
+    margin-bottom: 1.5rem; /* 各段落の下に余白を設定 */
+  }
+
+  .blog-content h2,
+  .blog-content h3,
+  .blog-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .blog-content ul,
+  .blog-content ol {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+
+  .blog-content blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+    font-style: italic;
+    line-height: 1.75;
+  }
+</style>

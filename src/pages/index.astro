@@ -9,6 +9,9 @@ export type blogType = {
 };
 const response = await getBlogs();
 console.log(response);
+function getExcerpt(content: string, length: number = 100) {
+  return content.length > length ? content.substring(0, length) + '...' : content;
+}
 ---
 
 <BaseLayout>
@@ -22,10 +25,12 @@ console.log(response);
             <h3 class="text-xl font-semibold mb-2 text-base-content">
               {blog.title}
             </h3>
-            <p class="text-base-content mb-2">{blog.content}</p>
             <p class="text-base-content text-sm mb-4">
           {dayjs(blog.publishedAt).format('YYYY-MM-DD HH:mm:ss')}
             </p>
+        <div class="text-base-content">
+            <p set:html={getExcerpt(blog.content, 100)}></p>
+        </div>
             <a href={blog.id} class="btn btn-primary">
               Read more
             </a>
@@ -34,13 +39,4 @@ console.log(response);
       }
     </div>
   </div>
-  <ul>
-    {
-      response.contents.map((blog: any) => (
-        <li>
-          <a href={blog.id}>{blog.title}</a>
-        </li>
-      ))
-    }
-  </ul>
 </BaseLayout>
